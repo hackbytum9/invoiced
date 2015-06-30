@@ -1,0 +1,21 @@
+<p>
+  <strong>number:</strong>
+  <%= @invoice.number %>
+</p>
+ 
+<p>
+  <strong>issue_date:</strong>
+  <%= @invoice.issue_date %>
+</p>
+
+<p>
+  <strong>due_date:</strong>
+  <%= @invoice.due_date %>
+</p>
+
+<p>
+  <strong>total:</strong>
+  <%= @invoice.total %>
+</p>
+
+<%= link_to 'Back', invoices_path ,class: "btn btn-info" %>

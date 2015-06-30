@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: 1
+  issue: 2015-06-26
+  due: 2015-06-26
+  total: 1
+  comment: MyString
+
+two:
+  number: 1
+  issue: 2015-06-26
+  due: 2015-06-26
+  total: 1
+  comment: MyString
