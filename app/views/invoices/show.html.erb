@@ -1,4 +1,4 @@
-
+<!-- 
 <p>
   <strong>number:</strong>
   <%= @invoice.number %>
@@ -17,7 +17,26 @@
 <p>
   <strong>total:</strong>
   <%= @invoice.total %>
-</p>
+</p> -->
+<div class="container panel panel-default head-invoice">
+      <div class="col-md-6">
+            <div class="form-group">
+                <label>Invoice number :</label>
+                <%= @invoice.number %>
+            </div>  
+
+            <div class="form-group">
+                <label>issue_date :</label>
+                <%= @invoice.issue_date %>
+            </div>
+
+            <div class="form-group">
+                <label>due_date :</label>
+                <%= @invoice.due_date %>
+            </div>
+                                      
+      </div>
+</div>
 
 <div class="container panel panel-default">
   <div class="row panel-body">
@@ -40,6 +59,12 @@
         </tr>
       <% end %>
     </table> 
+
+       <div class="form-group pull-right">
+          <h4>Sub Total : <%= @invoice.total %></h4>
+          <h4>vat 7%: <%= (@invoice.total*0.07).round(2) %></h4>
+          <h2>Total : <%= @invoice.total+(@invoice.total*0.07).round(2) %></h2>
+      </div>
 
   <% end %> 
   </div>
