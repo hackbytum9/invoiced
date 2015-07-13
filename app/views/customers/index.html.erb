@@ -1,0 +1,39 @@
+<div class="container">
+  <h1>Customer <%= link_to 'New', new_customer_path,:class => "btn btn-primary pull-right" %> </h1>
+    <div class="col-md-0">
+          </div>
+
+  <div class="row">
+    <table class="table table-striped">
+      <thead>
+        <th>No.</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Address</th>
+        <th>Phone</th>
+      </thead>
+      <tbody>
+        <% @customers.each_with_index do |customer , i| %>
+        <tr>
+          <td><%= i+1 %></td>
+          <td><%= customer.firstname %></td>
+          <td><%= customer.lastname %></td>
+          <td><%= customer.address %></td>
+          <td><%= customer.tel %></td>
+          <td>
+            <%= link_to 'Invoices', customer_invoices_path(customer),
+              class: "btn btn-info"%>
+            <%= link_to 'Edit', edit_customer_path(customer),
+              class: "btn btn-warning"%>
+            <%= link_to 'Delete', customer_path(customer),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' },
+                    class: "btn btn-danger" %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>    
+  </div>
+</div>
+

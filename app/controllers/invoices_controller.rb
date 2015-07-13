@@ -1,46 +1,53 @@
 class InvoicesController < ApplicationController
 
   def index
-    @invoices = Invoice.all
+    @customer = customer_id
+    @invoices = @customer.invoices.all
   end
 
   def show
-    @invoice = Invoice.find(params[:id])
+    @customer = customer_id
+    @invoice = @customer.invoices.find(params.require(:id))
   end
 
   def new
-   @invoice = Invoice.new
+   @customer = customer_id
+   @invoice = @customer.invoices.new
    3.times { @invoice.line_items.build }
   end
     
   def create
-    @invoice = Invoice.new(invoice_params)
+    @customer = customer_id
+    @invoice  = @customer.invoices.new(invoice_params)
     if @invoice.save
-      redirect_to invoices_path
+      redirect_to customer_invoices_path
     else
       render 'new'
     end
   end
 
   def edit
-    @invoice = Invoice.find(params[:id])
+   @customer = customer_id
+  @invoice  = @customer.invoices.find(params[:id])
   end
 
   def update
+    @customer = customer_id
     @invoice = Invoice.find(params[:id])
  
     if @invoice.update(invoice_params)
-      redirect_to invoices_path
+      redirect_to customer_invoice_path
     else
       render 'new'
     end
   end
 
   def destroy
-    @invoice = Invoice.find(params[:id]) 
+    @customer = customer_id
+    @invoice = @customer.invoices.find(params.require(:id)) 
     if @invoice.destroy
-      redirect_to invoices_path
-    end 
+      redirect_to customer_invoices_path
+    end
   end
 
     private
@@ -49,4 +56,10 @@ class InvoicesController < ApplicationController
       params.require(:invoice).permit(:number, :issue_date, :due_date, :total,
         line_items_attributes: [:id, :name, :quantity, :price, :invoice_id, :_destroy])
     end
+
+    def customer_id
+     current_user.customers.where(id: params[:customer_id]).first
+    end
 end
+# @customer.invoices.find(id_invoice)
+

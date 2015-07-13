@@ -1,6 +1,6 @@
 <div class="container">
 
-  <%= form_for @invoice do |f| %>
+  <%= form_for [@customer,@invoice] do |f| %>
     <% if @invoice.errors.any? %>
       <div id="error_explanation">
         <h2>

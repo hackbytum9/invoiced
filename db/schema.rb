@@ -11,19 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706053023) do
+ActiveRecord::Schema.define(version: 20150708104151) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.text     "address"
+    t.string   "tel"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "customers", ["user_id"], name: "index_customers_on_user_id", using: :btree
 
   create_table "invoices", force: :cascade do |t|
     t.string   "number"
     t.integer  "total"
     t.date     "due_date"
     t.date     "issue_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "customer_id"
   end
+
+  add_index "invoices", ["customer_id"], name: "index_invoices_on_customer_id", using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.string   "name"
@@ -61,5 +76,7 @@ ActiveRecord::Schema.define(version: 20150706053023) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "customers", "users"
+  add_foreign_key "invoices", "customers"
   add_foreign_key "line_items", "invoices"
 end
