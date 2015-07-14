@@ -50,6 +50,10 @@ class InvoicesController < ApplicationController
     end
   end
 
+  def user_params
+  params.require(:user).permit(:profile_image)
+end
+
     private
 
     def invoice_params

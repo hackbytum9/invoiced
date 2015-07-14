@@ -27,6 +27,15 @@
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 
+  <div class="field" style="margin-top:9px">
+    <%= image_tag attachment_url(@user, :profile_image, :fill, 300, 300, format: "jpg") %>
+  </div>
+
+   <div class="field">
+    <%= f.label :Profile_image %>
+    <%= f.attachment_field :profile_image %>
+  </div> 
+
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
