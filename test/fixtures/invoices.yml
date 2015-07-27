@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  number: 1
-  issue: 2015-06-26
-  due: 2015-06-26
-  total: 1
-  comment: MyString
+invoice_one:
+  number: "001"
+  issue_date: 2015-06-26
+  due_date: 2015-06-26
+  customer: customer_one
+  total: 0
 
-two:
-  number: 1
-  issue: 2015-06-26
-  due: 2015-06-26
-  total: 1
-  comment: MyString
+invoice_two:
+  number: "002"
+  issue_date: 2015-06-26
+  due_date: 2015-06-26
+  customer: customer_02
+  total: 0

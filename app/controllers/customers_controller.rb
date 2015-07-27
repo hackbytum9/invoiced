@@ -1,7 +1,6 @@
 class CustomersController < ApplicationController
 
   def index
-    puts current_user
     @customers = current_user.customers.all
   end
 

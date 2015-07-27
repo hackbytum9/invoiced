@@ -22,7 +22,7 @@
           <%= f.password_field :password_confirmation, autocomplete: "off" %>
         </div>
 
-        <div class="field">
+         <div class="field">
         <%= f.label :username %><br />
         <%= f.text_field :username, autofocus: true ,class: "form-control" %>
       </div>
@@ -36,6 +36,15 @@
         <%= f.label :Tel %><br />
         <%= f.text_field :tel, autofocus: true ,class: "form-control" %>
       </div>
+
+      <div class="field" style="margin-top:9px">
+        <%= image_tag attachment_url(@user, :profile_image, :fill, 300, 300, format: "jpg") %>
+      </div>
+
+      <div class="field">
+        <%= f.label :Profile_image %>
+        <%= f.attachment_field :profile_image %>
+      </div> 
 
         <div class="actions">
           <%= f.submit "Sign up" %>

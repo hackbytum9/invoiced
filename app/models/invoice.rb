@@ -1,5 +1,5 @@
 class Invoice < ActiveRecord::Base
-  has_many :line_items, dependent: :delete_all
+  has_many :line_items, dependent: :destroy
   belongs_to :customer
   validates :number, presence: true
 
@@ -13,13 +13,15 @@ class Invoice < ActiveRecord::Base
       items.each do |item|
         sum = sum + (item.quantity.to_i * item.price.to_i)
       end
-      summation(sum)
-  end
-
-  def summation(sum)
       self.total = sum
       self.save
   end
+
+  # # def summation(sum)
+
+  # #     self.total = sum
+  # #     self.save
+  # end
 
   def up_number
     unless number

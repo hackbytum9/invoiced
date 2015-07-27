@@ -1,17 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  quantity: 1
-  unit: MyString
-  price: 1
+lineitem_one:
+  name: item_01
+  quantity: 2
+  unit: 5
+  price: 100
   amount: 1
-  invoice_id: 
+  invoice: invoice_one
 
-two:
-  name: MyString
-  quantity: 1
-  unit: MyString
-  price: 1
+lineitem_two:
+  name: item_02
+  quantity: 10
+  unit: 6
+  price: 20
   amount: 1
-  invoice_id: 
+  invoice: invoice_two
